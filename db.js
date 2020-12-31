@@ -1,3 +1,4 @@
+const cTable = require('console.table');
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -20,7 +21,7 @@ connection.connect(function (err) {
 startQuery = () => {
     connection.query(`select * from actor`, function (error, results, fields) {
         if (error) throw error;
-        console.log('The solution is: ', results);
+        console.table(results);
     });
     connection.end();
 }
