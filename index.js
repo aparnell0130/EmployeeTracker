@@ -4,7 +4,6 @@ const logo = require('asciiart-logo');
 const config = require('./package.json');
 const questions = require('./js/questions')
 const inquirer = require('inquirer');
-const db = require('./db');
 console.log(
     logo({
         name: 'Employee Management System',
@@ -35,13 +34,13 @@ startManagement = () => {
                 jsFunctions.addEmp()
                 return;
             case 'View Department':
-                dbFunctions.viewDepartments()
+                jsFunctions.printDept()
                 return;
             case 'View Role':
-                dbFunctions.viewRoles()
+                jsFunctions.printRole()
                 return;
             case 'View Employee':
-                dbFunctions.viewEmployees()
+                jsFunctions.printEmployee()
                 return;
             default:
                 dbFunctions.endManagement()

@@ -12,6 +12,10 @@ module.exports = {
         ],
         message: 'What would you like to do?',
         name: 'options'
+    },
+    department: {
+        type: 'input',
+        name: 'deptName',
+        message: 'What is the new department name?'
     }
-
 }
