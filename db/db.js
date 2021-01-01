@@ -14,7 +14,7 @@ connection.connect((err) => {
         return;
     }
 
-    console.log('connected as user ' + connection.config.user);
+    console.log(`\n connected as user ${connection.config.user} \n`);
 });
 
 connection.query = util.promisify(connection.query)
