@@ -32,25 +32,27 @@ startManagement = () => {
             name: 'options'
         }
     ]).then((results) => {
-        if (results.options === 'Add Employee') {
-            addEmployee()
+        switch (results.options) {
+            case 'Add Department':
+                addDept()
+                return;
+            default:
+                dbFunctions.endManagement()
         }
-        if (results.options === 'Add Department') {
-            inquirer.prompt([
-                {
-                    type: 'input',
-                    name: 'deptName',
-                    message: 'What is the new department name?'
-                }
-            ]).then((results) => {
-                dbFunctions.addDepartment(results)
-                startManagement()
-            })
+    })
 
+}
+
+const addDept = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'deptName',
+            message: 'What is the new department name?'
         }
-        else {
-            dbFunctions.endManagement()
-        }
+    ]).then((results) => {
+        dbFunctions.addDepartment(results)
+        startManagement()
     })
 
 }
