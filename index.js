@@ -3,6 +3,7 @@ const jsFunctions = require('./js');
 const logo = require('asciiart-logo');
 const config = require('./package.json');
 const inquirer = require('inquirer');
+const db = require('./db');
 console.log(
     logo({
         name: 'Employee Management System',
@@ -25,8 +26,12 @@ startManagement = () => {
         {
             type: 'list',
             choices: [
-                'Add Employee',
                 'Add Department',
+                'Add Role',
+                'Add Employee',
+                'View Department',
+                'View Role',
+                'View Employee',
                 'End Program'
             ],
             message: 'What would you like to do?',
@@ -36,6 +41,21 @@ startManagement = () => {
         switch (results.options) {
             case 'Add Department':
                 jsFunctions.addDept()
+                return;
+            case 'Add Role':
+                jsFunctions.addRole()
+                return;
+            case 'Add Employee':
+                jsFunctions.addEmp()
+                return;
+            case 'View Department':
+                dbFunctions.viewDepartments()
+                return;
+            case 'View Role':
+                dbFunctions.viewRoles()
+                return;
+            case 'View Employee':
+                dbFunctions.viewEmployees()
                 return;
             default:
                 dbFunctions.endManagement()

@@ -29,12 +29,24 @@ module.exports = {
     },
     viewDepartments() {
         return connection.query(`SELECT * from department`)
+            .then((results) => {
+                console.table(results)
+                startManagement()
+            })
     },
     viewRoles() {
         return connection.query(`SELECT * from role`)
+            .then((results) => {
+                console.table(results)
+                startManagement()
+            })
     },
     viewEmployees() {
         return connection.query(`SELECT * from employee`)
+            .then((results) => {
+                console.table(results)
+                startManagement()
+            })
     },
     endManagement() {
         return connection.end()
