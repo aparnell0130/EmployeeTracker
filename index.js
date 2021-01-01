@@ -2,6 +2,7 @@ const dbFunctions = require('./db');
 const jsFunctions = require('./js');
 const logo = require('asciiart-logo');
 const config = require('./package.json');
+const questions = require('./js/questions')
 const inquirer = require('inquirer');
 const db = require('./db');
 console.log(
@@ -22,22 +23,7 @@ console.log(
         .render()
 );
 startManagement = () => {
-    inquirer.prompt([
-        {
-            type: 'list',
-            choices: [
-                'Add Department',
-                'Add Role',
-                'Add Employee',
-                'View Department',
-                'View Role',
-                'View Employee',
-                'End Program'
-            ],
-            message: 'What would you like to do?',
-            name: 'options'
-        }
-    ]).then((results) => {
+    inquirer.prompt(questions.options).then((results) => {
         switch (results.options) {
             case 'Add Department':
                 jsFunctions.addDept()
