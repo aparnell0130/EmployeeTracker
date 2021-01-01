@@ -27,6 +27,15 @@ module.exports = {
             }
         )
     },
+    viewDepartments() {
+        return connection.query(`SELECT * from department`)
+    },
+    viewRoles() {
+        return connection.query(`SELECT * from role`)
+    },
+    viewEmployees() {
+        return connection.query(`SELECT * from employee`)
+    },
     endManagement() {
         return connection.end()
     }
