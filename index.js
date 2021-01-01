@@ -25,6 +25,7 @@ startManagement = () => {
             type: 'list',
             choices: [
                 'Add Employee',
+                'Add Department',
                 'End Program'
             ],
             message: 'What would you like to do?',
@@ -33,6 +34,19 @@ startManagement = () => {
     ]).then((results) => {
         if (results.options === 'Add Employee') {
             addEmployee()
+        }
+        if (results.options === 'Add Department') {
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'deptName',
+                    message: 'What is the new department name?'
+                }
+            ]).then((results) => {
+                dbFunctions.addDepartment(results)
+                startManagement()
+            })
+
         }
         else {
             dbFunctions.endManagement()
