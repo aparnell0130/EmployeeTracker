@@ -1,4 +1,5 @@
-const dbFunctions = require('./db')
+const dbFunctions = require('./db');
+const jsFunctions = require('./js');
 const logo = require('asciiart-logo');
 const config = require('./package.json');
 const inquirer = require('inquirer');
@@ -34,7 +35,7 @@ startManagement = () => {
     ]).then((results) => {
         switch (results.options) {
             case 'Add Department':
-                addDept()
+                jsFunctions.addDept()
                 return;
             default:
                 dbFunctions.endManagement()
@@ -43,17 +44,5 @@ startManagement = () => {
 
 }
 
-const addDept = () => {
-    inquirer.prompt([
-        {
-            type: 'input',
-            name: 'deptName',
-            message: 'What is the new department name?'
-        }
-    ]).then((results) => {
-        dbFunctions.addDepartment(results)
-        startManagement()
-    })
 
-}
 startManagement()
