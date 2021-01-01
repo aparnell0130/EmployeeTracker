@@ -1,9 +1,9 @@
 const dbFunctions = require('../db')
 const questions = require('./questions')
 const inquirer = require('inquirer');
-const db = require('../db');
+const { employee } = require('./questions');
 module.exports = {
-    addDept() {
+    createDepartment() {
         inquirer.prompt(questions.department)
             .then((results) => {
                 dbFunctions.viewDepartments()
@@ -21,6 +21,28 @@ module.exports = {
                         }
                     })
             })
+    },
+    createRole() {
+        dbFunctions.viewDepartments().then((departments) => {
+            const deptChoices = departments.map((department) => ({
+                value: department.id,
+                name: department.dept_name
+            }))
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    choices: deptChoices,
+                    message: 'What department is this role for?',
+                    name: 'deptId'
+                },
+                questions.role.title,
+                questions.role.salary
+            ])
+                .then((results) => {
+                    dbFunctions.addRole(results)
+                    startManagement()
+                })
+        })
     },
     printDept() {
         dbFunctions.viewDepartments()

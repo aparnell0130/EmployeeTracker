@@ -7,13 +7,13 @@ startManagement = () => {
     inquirer.prompt(questions.options).then((results) => {
         switch (results.options) {
             case 'Add Department':
-                jsFunctions.addDept()
+                jsFunctions.createDepartment()
                 return;
             case 'Add Role':
-                jsFunctions.addRole()
+                jsFunctions.createRole()
                 return;
             case 'Add Employee':
-                jsFunctions.addEmp()
+                jsFunctions.createEmployee()
                 return;
             case 'View Department':
                 jsFunctions.printDept()
