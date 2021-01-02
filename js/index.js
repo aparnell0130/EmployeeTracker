@@ -123,7 +123,7 @@ module.exports = {
             })
     },
     printEmployee() {
-        dbFunctions.viewEmployees()
+        dbFunctions.employeeInfo()
             .then((results) => {
                 console.table(results)
                 startManagement()
