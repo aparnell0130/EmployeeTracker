@@ -8,6 +8,7 @@ module.exports = {
             'View Department',
             'View Role',
             'View Employee',
+            'Update Employee Role',
             'End Program'
         ],
         message: 'What would you like to do?',

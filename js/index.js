@@ -1,7 +1,6 @@
 const dbFunctions = require('../db')
 const questions = require('./questions')
 const inquirer = require('inquirer');
-const { employee } = require('./questions');
 module.exports = {
     createDepartment() {
         inquirer.prompt(questions.department)
@@ -47,13 +46,11 @@ module.exports = {
     createEmployee() {
         dbFunctions.viewManagers()
             .then((managers) => {
-                console.log(managers.length)
                 const chooseManager = ['none']
                 for (let i = 0; i < managers.length; i++) {
                     chooseManager.push(`${managers[i].id} ${managers[i].first_name} ${managers[i].last_name} `);
 
                 }
-                console.log(chooseManager)
                 dbFunctions.viewRoles()
                     .then((roles) => {
                         const roleChoices = roles.map((role) => ({
@@ -65,7 +62,7 @@ module.exports = {
                             {
                                 type: 'list',
                                 choices: chooseManager,
-                                message: 'What department will this employee work in?',
+                                message: `Who will be this employee's manager?`,
                                 name: 'managerId'
                             },
                             {
@@ -84,6 +81,39 @@ module.exports = {
 
             })
 
+    },
+    updateEmployeeRole() {
+        dbFunctions.viewEmployees().then((employees) => {
+            const employeeChoices = employees.map((employee) => ({
+                value: employee.id,
+                name: `${employee.first_name} ${employee.last_name}`
+            }))
+            dbFunctions.viewRoles()
+                .then((roles) => {
+                    const roleChoices = roles.map((role) => ({
+                        value: role.id,
+                        name: role.title
+                    }))
+                    inquirer.prompt([
+                        {
+                            type: 'list',
+                            choices: employeeChoices,
+                            message: `Which employee's role would you like to update?`,
+                            name: 'id'
+                        },
+                        {
+                            type: 'list',
+                            choices: roleChoices,
+                            message: `What would you like their new role to be?`,
+                            name: 'roleId'
+                        }
+                    ])
+                        .then((results) => {
+                            dbFunctions.updateRole(results)
+                            startManagement()
+                        })
+                })
+        })
     },
     printDept() {
         dbFunctions.viewDepartments()

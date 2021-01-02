@@ -24,6 +24,9 @@ startManagement = () => {
             case 'View Employee':
                 jsFunctions.printEmployee()
                 return;
+            case 'Update Employee Role':
+                jsFunctions.updateEmployeeRole()
+                return;
             default:
                 dbFunctions.endManagement()
         }

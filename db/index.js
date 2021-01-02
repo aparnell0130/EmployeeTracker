@@ -35,6 +35,18 @@ module.exports = {
             }
         )
     },
+    updateRole(results) {
+        return connection.query("UPDATE employee SET ? WHERE ?",
+            [
+                {
+                    role_id: results.roleId
+                },
+                {
+                    id: results.id
+                }
+            ]
+        )
+    },
     viewDepartments() {
         return connection.query(`SELECT * from department`)
     },
