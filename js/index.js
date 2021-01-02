@@ -44,6 +44,47 @@ module.exports = {
                 })
         })
     },
+    createEmployee() {
+        dbFunctions.viewManagers()
+            .then((managers) => {
+                console.log(managers.length)
+                const chooseManager = ['none']
+                for (let i = 0; i < managers.length; i++) {
+                    chooseManager.push(`${managers[i].id} ${managers[i].first_name} ${managers[i].last_name} `);
+
+                }
+                console.log(chooseManager)
+                dbFunctions.viewRoles()
+                    .then((roles) => {
+                        const roleChoices = roles.map((role) => ({
+                            value: role.id,
+                            name: role.title
+                        }))
+
+                        inquirer.prompt([
+                            {
+                                type: 'list',
+                                choices: chooseManager,
+                                message: 'What department will this employee work in?',
+                                name: 'managerId'
+                            },
+                            {
+                                type: 'list',
+                                choices: roleChoices,
+                                message: 'What role will this employee have?',
+                                name: 'roleId'
+                            },
+                            questions.employee.firstName,
+                            questions.employee.lastName
+                        ]).then((results) => {
+                            dbFunctions.addEmployee(results)
+                            startManagement()
+                        })
+                    })
+
+            })
+
+    },
     printDept() {
         dbFunctions.viewDepartments()
             .then((results) => {

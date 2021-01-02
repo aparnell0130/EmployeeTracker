@@ -18,12 +18,20 @@ module.exports = {
         )
     },
     addEmployee(results) {
+        const manId = results.managerId.split('')[0]
+        let manager
+        if (results.managerId !== 'none') {
+            manager = manId
+        }
+        else {
+            manager = null
+        }
         return connection.query(`INSERT INTO employee SET ?`,
             {
                 first_name: results.firstName,
                 last_name: results.lastName,
                 role_id: results.roleId,
-                manager_id: results.managerId
+                manager_id: manager
             }
         )
     },
@@ -35,6 +43,9 @@ module.exports = {
     },
     viewEmployees() {
         return connection.query(`SELECT * from employee`)
+    },
+    viewManagers() {
+        return connection.query(`SELECT * from employee em where em.manager_id is null`)
     },
     endManagement() {
         return connection.end()
