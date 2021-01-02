@@ -1,3 +1,4 @@
+DROP DATABASE employees_db;
 CREATE DATABASE employees_db; 
 
 USE employees_db;
