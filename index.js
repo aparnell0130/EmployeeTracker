@@ -27,6 +27,9 @@ startManagement = () => {
             case 'View Employees by Manager':
                 jsFunctions.viewByManager()
                 return;
+            case 'View Salary by Department':
+                jsFunctions.viewDepartmentSalary()
+                return;
             case 'Update Employee Role':
                 jsFunctions.updateEmployeeRole()
                 return;

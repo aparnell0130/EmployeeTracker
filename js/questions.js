@@ -9,6 +9,7 @@ module.exports = {
             'View Role',
             'View Employee',
             'View Employees by Manager',
+            'View Salary by Department',
             'Update Employee Role',
             'Update Employee Manager',
             'End Program'

@@ -106,6 +106,30 @@ module.exports = {
                 })
         })
     },
+    viewDepartmentSalary() {
+        dbFunctions.viewDepartments().then((departments) => {
+            const departmentChoices = departments.map((department) => ({
+                value: department.id,
+                name: department.dept_name
+            }))
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    choices: departmentChoices,
+                    message: 'What department is this role for?',
+                    name: 'deptId'
+                }
+            ])
+                .then((results) => {
+                    dbFunctions.viewSalary(results)
+                        .then((results) => {
+                            console.table(results)
+                            startManagement()
+                        })
+
+                })
+        })
+    },
     updateEmployeeRole() {
         dbFunctions.viewEmployees().then((employees) => {
             const employeeChoices = employees.map((employee) => ({
