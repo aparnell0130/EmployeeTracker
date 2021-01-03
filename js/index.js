@@ -139,6 +139,39 @@ module.exports = {
                 })
         })
     },
+    updateEmployeeManager() {
+        dbFunctions.viewEmployees().then((employees) => {
+            const employeeChoices = employees.map((employee) => ({
+                value: employee.id,
+                name: `${employee.first_name} ${employee.last_name}`
+            }))
+            dbFunctions.viewManagers()
+                .then((managers) => {
+                    const managerChoices = managers.map((manager) => ({
+                        value: manager.id,
+                        name: `${manager.first_name} ${manager.last_name}`
+                    }))
+                    inquirer.prompt([
+                        {
+                            type: 'list',
+                            choices: employeeChoices,
+                            message: `Which employee's role would you like to update?`,
+                            name: 'id'
+                        },
+                        {
+                            type: 'list',
+                            choices: managerChoices,
+                            message: `What would you like their new role to be?`,
+                            name: 'managerId'
+                        }
+                    ])
+                        .then((results) => {
+                            dbFunctions.updateManager(results)
+                            startManagement()
+                        })
+                })
+        })
+    },
     printDept() {
         dbFunctions.viewDepartments()
             .then((results) => {

@@ -10,6 +10,7 @@ module.exports = {
             'View Employee',
             'View Employees by Manager',
             'Update Employee Role',
+            'Update Employee Manager',
             'End Program'
         ],
         message: 'What would you like to do?',

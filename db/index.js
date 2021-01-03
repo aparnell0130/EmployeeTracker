@@ -35,6 +35,18 @@ module.exports = {
             }
         )
     },
+    updateManager(results) {
+        return connection.query("UPDATE employee SET ? WHERE ?",
+            [
+                {
+                    manager_id: results.managerId
+                },
+                {
+                    id: results.id
+                }
+            ]
+        )
+    },
     updateRole(results) {
         return connection.query("UPDATE employee SET ? WHERE ?",
             [
