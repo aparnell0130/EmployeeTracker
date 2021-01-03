@@ -24,6 +24,9 @@ startManagement = () => {
             case 'View Employee':
                 jsFunctions.printEmployee()
                 return;
+            case 'View Employees by Manager':
+                jsFunctions.viewByManager()
+                return;
             case 'Update Employee Role':
                 jsFunctions.updateEmployeeRole()
                 return;

@@ -47,6 +47,19 @@ module.exports = {
             ]
         )
     },
+    viewBy(results) {
+        return connection.query(`SELECT ee.id, ee.first_name, ee.last_name, er.title, ed.dept_name, er.salary, CONCAT(em.first_name,' ',em.last_name) as manager
+        FROM employees_db.employee as ee
+        LEFT JOIN  employees_db.role as er
+        ON ee.role_id = er.id
+        LEFT JOIN employees_db.department as ed
+        ON er.department_id = ed.id
+        LEFT JOIN employees_db.employee as em
+        on ee.manager_id = em.id
+        WHERE em.id = ?`,
+            [results.manager]
+        )
+    },
     viewDepartments() {
         return connection.query(`SELECT * from department`)
     },

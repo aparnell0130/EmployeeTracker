@@ -8,6 +8,7 @@ module.exports = {
             'View Department',
             'View Role',
             'View Employee',
+            'View Employees by Manager',
             'Update Employee Role',
             'End Program'
         ],

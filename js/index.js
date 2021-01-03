@@ -82,6 +82,30 @@ module.exports = {
             })
 
     },
+    viewByManager() {
+        dbFunctions.viewManagers().then((managers) => {
+            const managerChoices = managers.map((manager) => ({
+                value: manager.id,
+                name: `${manager.first_name} ${manager.last_name}`
+            }))
+            inquirer.prompt([
+                {
+                    type: 'list',
+                    choices: managerChoices,
+                    message: 'What department is this role for?',
+                    name: 'manager'
+                }
+            ])
+                .then((results) => {
+                    dbFunctions.viewBy(results)
+                        .then((results) => {
+                            console.table(results)
+                            startManagement()
+                        })
+
+                })
+        })
+    },
     updateEmployeeRole() {
         dbFunctions.viewEmployees().then((employees) => {
             const employeeChoices = employees.map((employee) => ({
