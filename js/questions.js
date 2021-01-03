@@ -12,6 +12,7 @@ module.exports = {
             'View Salary by Department',
             'Update Employee Role',
             'Update Employee Manager',
+            'Delete Department',
             'End Program'
         ],
         message: 'What would you like to do?',

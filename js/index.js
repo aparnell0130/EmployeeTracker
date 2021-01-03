@@ -196,6 +196,26 @@ module.exports = {
                 })
         })
     },
+    removeDepartment() {
+        dbFunctions.viewDepartments()
+            .then((departments) => {
+                const departmentChoices = departments.map((department) => ({
+                    value: department.id,
+                    name: department.dept_name
+                }))
+                inquirer.prompt([
+                    {
+                        type: 'list',
+                        choices: departmentChoices,
+                        message: 'Which department would you like to delete?',
+                        name: 'deptId'
+                    }
+                ]).then((results) => {
+                    dbFunctions.deleteDepartment(results)
+                    startManagement()
+                })
+            })
+    },
     printDept() {
         dbFunctions.viewDepartments()
             .then((results) => {

@@ -59,6 +59,13 @@ module.exports = {
             ]
         )
     },
+    deleteDepartment(results) {
+        return connection.query(`DELETE FROM department WHERE ?`,
+            {
+                id: results.deptId
+            }
+        )
+    },
     viewBy(results) {
         return connection.query(`SELECT ee.id, ee.first_name, ee.last_name, er.title, ed.dept_name, er.salary, CONCAT(em.first_name,' ',em.last_name) as manager
                                 FROM employees_db.employee as ee
