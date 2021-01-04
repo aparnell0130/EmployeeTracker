@@ -109,6 +109,14 @@ module.exports = {
             startManagement()
         })
     },
+    removeEmployee() {
+        inquirer.prompt([
+            questions.employee.employeeId
+        ]).then((results) => {
+            dbFunctions.deleteEmployee(results)
+            startManagement()
+        })
+    },
     printDept() {
         dbFunctions.viewDepartments()
             .then((results) => {
