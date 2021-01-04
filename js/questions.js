@@ -60,6 +60,8 @@ module.exports = {
             'Update Employee Role',
             'Update Employee Manager',
             'Delete Department',
+            'Delete Role',
+            'Delete Employee',
             'End Program'
         ],
         message: 'What would you like to do?',
@@ -74,7 +76,7 @@ module.exports = {
         deptId: {
             type: 'list',
             choices: () => departmentId(),
-            message: 'What department is this role for?',
+            message: 'Which department?',
             name: 'deptId'
 
         },
@@ -93,13 +95,13 @@ module.exports = {
         manager: {
             type: 'list',
             choices: () => managerId(),
-            message: `Who will be this employee's manager?`,
+            message: `Which manager?`,
             name: 'managerId'
         },
         roleId: {
             type: 'list',
             choices: () => roleId(),
-            message: 'What role will this employee have?',
+            message: 'Which role?',
             name: 'roleId'
         },
         firstName: {
@@ -115,7 +117,7 @@ module.exports = {
         employeeId: {
             type: 'list',
             choices: () => employeeId(),
-            message: `Which employee's role would you like to update?`,
+            message: `Which employee?`,
             name: 'id'
         }
     }

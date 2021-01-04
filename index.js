@@ -39,6 +39,12 @@ startManagement = () => {
             case 'Delete Department':
                 jsFunctions.removeDepartment()
                 return;
+            case 'Delete Role':
+                jsFunctions.removeRole()
+                return;
+            case 'Delete Employee':
+                jsFunctions.removeEmployee()
+                return;
             default:
                 dbFunctions.endManagement()
         }

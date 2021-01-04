@@ -58,6 +58,20 @@ module.exports = {
             }
         )
     },
+    deleteRole(results) {
+        return connection.query(`DELETE FROM role WHERE ?`,
+            {
+                id: results.roleId
+            }
+        )
+    },
+    deleteEmployee(results) {
+        return connection.query(`DELETE FROM employee WHERE ?`,
+            {
+                id: results.id
+            }
+        )
+    },
     viewBy(results) {
         return connection.query(`SELECT ee.id, ee.first_name, ee.last_name, er.title, ed.dept_name, er.salary, CONCAT(em.first_name,' ',em.last_name) as manager
                                 FROM employees_db.employee as ee

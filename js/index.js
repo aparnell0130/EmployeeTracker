@@ -101,6 +101,14 @@ module.exports = {
             startManagement()
         })
     },
+    removeRole() {
+        inquirer.prompt([
+            questions.employee.roleId
+        ]).then((results) => {
+            dbFunctions.deleteRole(results)
+            startManagement()
+        })
+    },
     printDept() {
         dbFunctions.viewDepartments()
             .then((results) => {
