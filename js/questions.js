@@ -71,25 +71,25 @@ module.exports = {
         deptId: {
             type: 'list',
             choices: () => departmentId(),
-            message: 'Which department?',
+            message: 'Select a department:',
             name: 'deptId'
         },
         manager: {
             type: 'list',
             choices: () => managerId(),
-            message: `Which manager?`,
+            message: `Select a manager:`,
             name: 'managerId'
         },
         roleId: {
             type: 'list',
             choices: () => roleId(),
-            message: 'Which role?',
+            message: 'Select a role:',
             name: 'roleId'
         },
         employeeId: {
             type: 'list',
             choices: () => employeeId(),
-            message: `Which employee?`,
+            message: `Select an employee:`,
             name: 'id'
         }
     },

@@ -86,7 +86,7 @@ module.exports = {
         )
     },
     viewSalary(results) {
-        return connection.query(`SELECT  ed.dept_name, sum(er.salary)
+        return connection.query(`SELECT  ed.dept_name, sum(er.salary) as total_salary
                                 FROM employees_db.employee as ee
                                 LEFT JOIN  employees_db.role as er
                                 ON ee.role_id = er.id
