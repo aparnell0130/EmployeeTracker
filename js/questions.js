@@ -1,50 +1,4 @@
-const dbFunctions = require('../db')
-
-const departmentId = () => {
-    return dbFunctions.viewDepartments()
-        .then((departments) => {
-            const deptChoices = departments.map((department) => ({
-                value: department.id,
-                name: department.dept_name
-            }))
-            return deptChoices
-        })
-}
-const managerId = () => {
-    return dbFunctions.viewManagers()
-        .then((managers) => {
-            const managerChoices = managers.map((manager) => ({
-                value: manager.id,
-                name: `${manager.first_name} ${manager.last_name}`
-            }))
-            managerChoices.unshift({
-                value: null,
-                name: "No Manager"
-            })
-            return managerChoices
-        })
-}
-const roleId = () => {
-    return dbFunctions.viewRoles()
-        .then((roles) => {
-            const deptChoices = roles.map((role) => ({
-                value: role.id,
-                name: role.title
-            }))
-            return deptChoices
-        })
-}
-
-const employeeId = () => {
-    return dbFunctions.viewEmployees().then((employees) => {
-        const employeeChoices = employees.map((employee) => ({
-            value: employee.id,
-            name: `${employee.first_name} ${employee.last_name}`
-        }))
-        return employeeChoices
-    })
-}
-
+const getIdFunctions = require('./getIds')
 module.exports = {
     options: {
         type: 'list',
@@ -70,25 +24,25 @@ module.exports = {
     functions: {
         deptId: {
             type: 'list',
-            choices: () => departmentId(),
+            choices: () => getIdFunctions.departmentId(),
             message: 'Select a department:',
             name: 'deptId'
         },
         manager: {
             type: 'list',
-            choices: () => managerId(),
+            choices: () => getIdFunctions.managerId(),
             message: `Select a manager:`,
             name: 'managerId'
         },
         roleId: {
             type: 'list',
-            choices: () => roleId(),
+            choices: () => getIdFunctions.roleId(),
             message: 'Select a role:',
             name: 'roleId'
         },
         employeeId: {
             type: 'list',
-            choices: () => employeeId(),
+            choices: () => getIdFunctions.employeeId(),
             message: `Select an employee:`,
             name: 'id'
         }
