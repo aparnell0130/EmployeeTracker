@@ -1,3 +1,50 @@
+const dbFunctions = require('../db')
+
+const departmentId = () => {
+    return dbFunctions.viewDepartments()
+        .then((departments) => {
+            const deptChoices = departments.map((department) => ({
+                value: department.id,
+                name: department.dept_name
+            }))
+            return deptChoices
+        })
+}
+const managerId = () => {
+    return dbFunctions.viewManagers()
+        .then((managers) => {
+            const managerChoices = managers.map((manager) => ({
+                value: manager.id,
+                name: `${manager.first_name} ${manager.last_name}`
+            }))
+            managerChoices.unshift({
+                value: null,
+                name: "No Manager"
+            })
+            return managerChoices
+        })
+}
+const roleId = () => {
+    return dbFunctions.viewRoles()
+        .then((roles) => {
+            const deptChoices = roles.map((role) => ({
+                value: role.id,
+                name: role.title
+            }))
+            return deptChoices
+        })
+}
+
+const employeeId = () => {
+    return dbFunctions.viewEmployees().then((employees) => {
+        const employeeChoices = employees.map((employee) => ({
+            value: employee.id,
+            name: `${employee.first_name} ${employee.last_name}`
+        }))
+        return employeeChoices
+    })
+}
+
 module.exports = {
     options: {
         type: 'list',
@@ -24,6 +71,13 @@ module.exports = {
         message: 'What is the new department name?'
     },
     role: {
+        deptId: {
+            type: 'list',
+            choices: () => departmentId(),
+            message: 'What department is this role for?',
+            name: 'deptId'
+
+        },
         salary: {
             type: 'input',
             message: 'What is the salary for this role?',
@@ -36,6 +90,18 @@ module.exports = {
         }
     },
     employee: {
+        manager: {
+            type: 'list',
+            choices: () => managerId(),
+            message: `Who will be this employee's manager?`,
+            name: 'managerId'
+        },
+        roleId: {
+            type: 'list',
+            choices: () => roleId(),
+            message: 'What role will this employee have?',
+            name: 'roleId'
+        },
         firstName: {
             type: 'input',
             message: `What is the employee's first name?`,
@@ -45,6 +111,12 @@ module.exports = {
             type: 'input',
             message: `What is the employee's last name?`,
             name: 'lastName'
+        },
+        employeeId: {
+            type: 'list',
+            choices: () => employeeId(),
+            message: `Which employee's role would you like to update?`,
+            name: 'id'
         }
     }
 }

@@ -18,20 +18,12 @@ module.exports = {
         )
     },
     addEmployee(results) {
-        const manId = results.managerId.split('')[0]
-        let manager
-        if (results.managerId !== 'none') {
-            manager = manId
-        }
-        else {
-            manager = null
-        }
         return connection.query(`INSERT INTO employee SET ?`,
             {
                 first_name: results.firstName,
                 last_name: results.lastName,
                 role_id: results.roleId,
-                manager_id: manager
+                manager_id: results.managerId
             }
         )
     },
@@ -76,7 +68,7 @@ module.exports = {
                                 LEFT JOIN employees_db.employee as em
                                 on ee.manager_id = em.id
                                 WHERE em.id = ?`,
-            [results.manager]
+            [results.managerId]
         )
     },
     viewSalary(results) {
