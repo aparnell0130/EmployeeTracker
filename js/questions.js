@@ -67,31 +67,13 @@ module.exports = {
         message: 'What would you like to do?',
         name: 'options'
     },
-    department: {
-        type: 'input',
-        name: 'deptName',
-        message: 'What is the new department name?'
-    },
-    role: {
+    functions: {
         deptId: {
             type: 'list',
             choices: () => departmentId(),
             message: 'Which department?',
             name: 'deptId'
-
         },
-        salary: {
-            type: 'input',
-            message: 'What is the salary for this role?',
-            name: 'roleSalary'
-        },
-        title: {
-            type: 'input',
-            message: 'What is the title of this role?',
-            name: 'roleTitle'
-        }
-    },
-    employee: {
         manager: {
             type: 'list',
             choices: () => managerId(),
@@ -104,6 +86,31 @@ module.exports = {
             message: 'Which role?',
             name: 'roleId'
         },
+        employeeId: {
+            type: 'list',
+            choices: () => employeeId(),
+            message: `Which employee?`,
+            name: 'id'
+        }
+    },
+    department: {
+        type: 'input',
+        name: 'deptName',
+        message: 'What is the new department name?'
+    },
+    role: {
+        salary: {
+            type: 'input',
+            message: 'What is the salary for this role?',
+            name: 'roleSalary'
+        },
+        title: {
+            type: 'input',
+            message: 'What is the title of this role?',
+            name: 'roleTitle'
+        }
+    },
+    employee: {
         firstName: {
             type: 'input',
             message: `What is the employee's first name?`,
@@ -114,11 +121,5 @@ module.exports = {
             message: `What is the employee's last name?`,
             name: 'lastName'
         },
-        employeeId: {
-            type: 'list',
-            choices: () => employeeId(),
-            message: `Which employee?`,
-            name: 'id'
-        }
     }
 }

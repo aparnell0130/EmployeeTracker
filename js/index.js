@@ -24,7 +24,7 @@ module.exports = {
     createRole() {
 
         inquirer.prompt([
-            questions.role.deptId,
+            questions.functions.deptId,
             questions.role.title,
             questions.role.salary
         ])
@@ -37,8 +37,8 @@ module.exports = {
     createEmployee() {
 
         inquirer.prompt([
-            questions.employee.manager,
-            questions.employee.roleId,
+            questions.functions.manager,
+            questions.functions.roleId,
             questions.employee.firstName,
             questions.employee.lastName
         ]).then((results) => {
@@ -49,7 +49,7 @@ module.exports = {
     },
     viewByManager() {
         inquirer.prompt([
-            questions.employee.manager,
+            questions.functions.manager,
         ])
             .then((results) => {
                 dbFunctions.viewBy(results)
@@ -62,7 +62,7 @@ module.exports = {
     },
     viewDepartmentSalary() {
         inquirer.prompt([
-            questions.role.deptId
+            questions.functions.deptId
         ])
             .then((results) => {
                 dbFunctions.viewSalary(results)
@@ -75,8 +75,8 @@ module.exports = {
     },
     updateEmployeeRole() {
         inquirer.prompt([
-            questions.employee.employeeId,
-            questions.employee.roleId
+            questions.functions.employeeId,
+            questions.functions.roleId
         ])
             .then((results) => {
                 dbFunctions.updateRole(results)
@@ -85,8 +85,8 @@ module.exports = {
     },
     updateEmployeeManager() {
         inquirer.prompt([
-            questions.employee.employeeId,
-            questions.employee.manager
+            questions.functions.employeeId,
+            questions.functions.manager
         ])
             .then((results) => {
                 dbFunctions.updateManager(results)
@@ -95,7 +95,7 @@ module.exports = {
     },
     removeDepartment() {
         inquirer.prompt([
-            questions.role.deptId
+            questions.functions.deptId
         ]).then((results) => {
             dbFunctions.deleteDepartment(results)
             startManagement()
@@ -103,7 +103,7 @@ module.exports = {
     },
     removeRole() {
         inquirer.prompt([
-            questions.employee.roleId
+            questions.functions.roleId
         ]).then((results) => {
             dbFunctions.deleteRole(results)
             startManagement()
@@ -111,7 +111,7 @@ module.exports = {
     },
     removeEmployee() {
         inquirer.prompt([
-            questions.employee.employeeId
+            questions.functions.employeeId
         ]).then((results) => {
             dbFunctions.deleteEmployee(results)
             startManagement()
