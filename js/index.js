@@ -43,6 +43,7 @@ module.exports = {
             // send results to add role function
             .then((results) => {
                 dbFunctions.addRole(results)
+                console.log('\n Successfully added role! \n')
                 startManagement()
             })
 
@@ -59,6 +60,7 @@ module.exports = {
             // send results to add employee function
             .then((results) => {
                 dbFunctions.addEmployee(results)
+                console.log('\n Successfully added employee! \n')
                 startManagement()
             })
 
@@ -108,6 +110,7 @@ module.exports = {
             // send results to update role function
             .then((results) => {
                 dbFunctions.updateRole(results)
+                console.log(`\n Successfully updated employee's role! \n`)
                 startManagement()
             })
     },
@@ -122,6 +125,7 @@ module.exports = {
             // send results to update manager function
             .then((results) => {
                 dbFunctions.updateManager(results)
+                console.log(`\n Successfully updated employee's manager! \n`)
                 startManagement()
             })
     },
@@ -135,6 +139,7 @@ module.exports = {
             // send results to delete department function
             .then((results) => {
                 dbFunctions.deleteDepartment(results)
+                console.log(`\n Successfully deleted department! \n`)
                 startManagement()
             })
     },
@@ -148,6 +153,7 @@ module.exports = {
             // send results to delete role function
             .then((results) => {
                 dbFunctions.deleteRole(results)
+                console.log(`\n Successfully deleted role! \n`)
                 startManagement()
             })
     },
@@ -161,6 +167,7 @@ module.exports = {
             // send results to delete employee function
             .then((results) => {
                 dbFunctions.deleteEmployee(results)
+                console.log(`\n Successfully deleted department! \n`)
                 startManagement()
             })
     },
