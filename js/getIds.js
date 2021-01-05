@@ -1,5 +1,8 @@
+// require database functions
 const dbFunctions = require('../db')
+
 module.exports = {
+    // function to get the department name and ID, then use ID for value
     departmentId() {
         return dbFunctions.viewDepartments()
             .then((departments) => {
@@ -10,6 +13,7 @@ module.exports = {
                 return deptChoices
             })
     },
+    // function to get the manager name and ID, then use ID for value
     managerId() {
         return dbFunctions.viewManagers()
             .then((managers) => {
@@ -24,17 +28,18 @@ module.exports = {
                 return managerChoices
             })
     },
+    // function to get the role name and ID, then use ID for value
     roleId() {
         return dbFunctions.viewRoles()
             .then((roles) => {
                 const deptChoices = roles.map((role) => ({
                     value: role.id,
-                    name: role.title
+                    name: `${role.dept_name} ${role.title}`
                 }))
                 return deptChoices
             })
     },
-
+    // function to get the employee name and ID, then use ID for value
     employeeId() {
         return dbFunctions.viewEmployees().then((employees) => {
             const employeeChoices = employees.map((employee) => ({

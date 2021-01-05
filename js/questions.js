@@ -1,4 +1,7 @@
+// require to get functions for getting IDs
 const getIdFunctions = require('./getIds')
+
+// module for inquirer questions
 module.exports = {
     options: {
         type: 'list',

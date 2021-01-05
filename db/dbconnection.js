@@ -1,6 +1,9 @@
+// require node packages
 const cTable = require('console.table');
 const util = require('util')
 const mysql = require('mysql');
+
+// create connection to mysql
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'aaron',
@@ -8,15 +11,11 @@ const connection = mysql.createConnection({
     database: 'employees_db'
 });
 
-connection.connect(/**(err) => {
-    if (err) {
-        console.error('error connecting: ' + err.stack);
-        return;
-    }
+// connect to mysql
+connection.connect();
 
-    console.log(`\n connected as user ${connection.config.user} \n`);
-}**/);
-
+// promisify connection query for .then chains
 connection.query = util.promisify(connection.query)
 
+// export mysql connection
 module.exports = connection

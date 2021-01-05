@@ -1,10 +1,15 @@
+// require files and npm packages  
 const dbFunctions = require('./db');
 const jsFunctions = require('./js');
 const logo = require('./assets/logo/logo')
 const questions = require('./js/questions')
 const inquirer = require('inquirer');
+
+// starting function
 startManagement = () => {
+    // ask question with options
     inquirer.prompt(questions.options).then((results) => {
+        // after user selects option run the corresponding function
         switch (results.options) {
             case 'Add Department':
                 jsFunctions.createDepartment()
@@ -51,6 +56,5 @@ startManagement = () => {
     })
 
 }
-
 
 startManagement()
