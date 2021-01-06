@@ -39,10 +39,12 @@ This application is a Content Management System. It will allow you to easily man
 ## Tools_&_Technologies
 - JavaScript
 - Node
-- npm Inquirer
 - MySQL
-- Console.table
-- asciiart-logo
+- npm packages 
+    - Inquirer
+    - Console.table
+    - asciiart-logo
+    - mysql
 
 ## Code
  Create a list of managers for user to choose from
