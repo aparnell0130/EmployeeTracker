@@ -26,7 +26,7 @@ This application is a Content Management System. It will allow you to easily man
 - Download repo zip file
 - Enter "npm i" in VSCode integrated terminal or GitBash/Terminal while in correct folder.
 - For database structure, run the schema file located in the SQL folder. 
-    - If you have the the MySQL extension in VSCode, you can just run the file. Otherwise copy and paste it in your MySQL workbench.
+    - If you have the the MySQL extension in VSCode, you can just run the file. Otherwise copy and paste it in your MySQL workbench. For test data you can also run the seed file located in the SQL folder.
 
 
 ## Usage
