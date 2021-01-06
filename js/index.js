@@ -167,7 +167,7 @@ module.exports = {
             // send results to delete employee function
             .then((results) => {
                 dbFunctions.deleteEmployee(results)
-                console.log(`\n Successfully deleted department! \n`)
+                console.log(`\n Successfully deleted employee! \n`)
                 startManagement()
             })
     },

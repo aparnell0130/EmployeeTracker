@@ -130,7 +130,8 @@ module.exports = {
                                 from employee em 
                                 inner join role er
                                 on em.role_id = er.id 
-                                where er.title like '%Manager'`)
+                                where (er.title like '%Manager'
+                                or er.title like '%Lead')`)
     },
     // function to view employee information
     employeeInfo() {

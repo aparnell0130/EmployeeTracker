@@ -13,15 +13,19 @@ VALUES
 ('Manager',90000,2),
 ('Sales_Rep',55000,2),
 ('Manager',110000,3),
-('Engineer',85000,3)
+('Engineer',85000,3),
+('Assistant Manager',95000,3),
+('Lead',70000,2)
 ;
 
 INSERT INTO employee(first_name,last_name,role_id,manager_id)
 VALUES
 ('Bruce','Wayne',5,null),
-('Kal-El','Kent',6,1),
+('Dick','Grayson',7,1),
+('Kal-El','Kent',6,2),
 ('Diana','Troy',3,null),
-('Barry','Allen',4,3),
+('Alfred','Pennyworth',8,4),
+('Barry','Allen',4,5),
 ('John','Stewart',1,null),
-('Arthur','Curry',2,5)
+('Arthur','Curry',2,7)
 ;

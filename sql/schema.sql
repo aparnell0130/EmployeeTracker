@@ -1,21 +1,22 @@
-DROP DATABASE employees_db;
-CREATE DATABASE employees_db; 
+DROP DATABASE IF EXISTS employees_db;
+CREATE database employees_db;
 
 USE employees_db;
 
-
 CREATE TABLE department (
     id INT unsigned AUTO_INCREMENT primary key,
-    dept_name VARCHAR(30) UNIQUE NOT NULL
+    dept_name VARCHAR(30) UNIQUE NOT NULL 
 );
+
 CREATE TABLE role (
     id int unsigned AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL unsigned NOT NULL,
     department_id INT unsigned NOT NULL,
     index dep_ind (department_id),
-    constraint fk_department foreign key (department_id) references department(id) on delete CASCADE
+    constraint fk_department foreign key (department_id) references department(id) on delete CASCADE 
 );
+
 CREATE TABLE employee (
     id int unsigned AUTO_INCREMENT PRIMARY KEY ,
     first_name VARCHAR(30) NOT NULL ,
